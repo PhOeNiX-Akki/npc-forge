@@ -1,7 +1,7 @@
 """
-app.py — NPC-Forge Streamlit Interface (Phase 7)
+app.py — NPC-Forge Streamlit Interface (Phoenix D. Akki)
 -------------------------------------------------
-Phase 7 includes five modes accessible via the sidebar:
+v0.1 includes five modes accessible via the sidebar:
   ⚔️ Chat    — Single-NPC conversation (Phase 1–3 core)
   🍺 Tavern  — Multi-NPC scene with overhear reactions
   🎙 Voice   — Full voice I/O (Whisper STT + gTTS)
@@ -587,7 +587,7 @@ with st.sidebar:
             <div style="font-family:'Cinzel Decorative',serif;font-size:1.2rem;
                 background:linear-gradient(90deg,{p},{a});-webkit-background-clip:text;
                 -webkit-text-fill-color:transparent;font-weight:700;">⚒ NPC-Forge</div>
-            <div style="font-size:.65rem;color:#4a3a3a;letter-spacing:.2em;text-transform:uppercase;">v0.7 · Phase 7</div>
+            <div style="font-size:.65rem;color:#4a3a3a;letter-spacing:.2em;text-transform:uppercase;">v0.1 · Phoenix D. Akki</div>
         </div>
         <div style="text-align:center;padding:.2rem 0 .4rem 0;">
             <span style="font-size:.75rem;color:{a};">⚔ {player_display}</span>
@@ -730,7 +730,7 @@ with st.sidebar:
         st.session_state.player_name = ""
         st.rerun()
 
-    st.markdown(f'<div class="forge-footer">NPC-Forge · Phase 7</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="forge-footer">NPC-Forge · v0.1 · Phoenix D. Akki</div>', unsafe_allow_html=True)
 
 
 # ═══════════════════════════════════════════
@@ -741,7 +741,7 @@ if not st.session_state.player_name:
     st.markdown(f"""
         <div style="text-align:center;padding:3rem 0 1.5rem 0;">
             <div class="forge-title">⚒ NPC-Forge</div>
-            <div class="forge-subtitle">Phase 7 · Tavern · Voice · Emotion · API</div>
+            <div class="forge-subtitle">v0.1 · Phoenix D. Akki · Tavern · Voice · Emotion · API</div>
         </div>
     """, unsafe_allow_html=True)
     _, col, _ = st.columns([1,2,1])
