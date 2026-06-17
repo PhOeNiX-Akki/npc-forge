@@ -1266,7 +1266,10 @@ elif mode == "⚒️ Forge":
                     with st.spinner("Extracting text from PDF..."):
                         extracted = LoreIngestion.from_pdf(pdf_bytes)
                         if extracted:
-                            st.session_state.f_lore = (st.session_state.f_lore + "\n\n" + extracted).strip()
+                            new_lore = (st.session_state.f_lore + "\n\n" + extracted).strip()
+                            if "f_lore" in st.session_state:
+                                del st.session_state["f_lore"]
+                            st.session_state.f_lore = new_lore
                             st.success(f"Appended lore from {pdf_file.name}!")
                             st.rerun()
                         else:
@@ -1287,7 +1290,10 @@ elif mode == "⚒️ Forge":
                 try:
                     text, title = LoreIngestion.from_wikipedia(wiki_query.strip())
                     if text:
-                        st.session_state.f_lore = (st.session_state.f_lore + f"\n\n## Wikipedia: {title}\n" + text).strip()
+                        new_lore = (st.session_state.f_lore + f"\n\n## Wikipedia: {title}\n" + text).strip()
+                        if "f_lore" in st.session_state:
+                            del st.session_state["f_lore"]
+                        st.session_state.f_lore = new_lore
                         st.success(f"Appended Wikipedia article '{title}'!")
                         st.rerun()
                     else:
