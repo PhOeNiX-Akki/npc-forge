@@ -44,9 +44,18 @@ class NPCBrain:
         """
         api_key = os.environ.get("GROQ_API_KEY")
         if not api_key:
+            # Fallback for Streamlit Community Cloud secrets
+            try:
+                import streamlit as st
+                if "GROQ_API_KEY" in st.secrets:
+                    api_key = st.secrets["GROQ_API_KEY"]
+            except Exception:
+                pass
+
+        if not api_key:
             raise ValueError(
                 "🔑 GROQ_API_KEY not found! "
-                "Please add it to your .env file. "
+                "Please add it to your .env file or Streamlit secrets. "
                 "Get your free key at: https://console.groq.com"
             )
         self.client = Groq(api_key=api_key)
