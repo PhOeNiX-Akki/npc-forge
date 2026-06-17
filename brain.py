@@ -42,15 +42,18 @@ class NPCBrain:
         Args:
             model: The Groq model ID (e.g., 'llama-3.3-70b-versatile')
         """
-        api_key = os.environ.get("GROQ_API_KEY")
+        api_key = None
+        # Prioritize Streamlit secrets (for Community Cloud)
+        try:
+            import streamlit as st
+            if "GROQ_API_KEY" in st.secrets:
+                api_key = st.secrets["GROQ_API_KEY"]
+        except Exception:
+            pass
+
+        # Fallback to local environment variables
         if not api_key:
-            # Fallback for Streamlit Community Cloud secrets
-            try:
-                import streamlit as st
-                if "GROQ_API_KEY" in st.secrets:
-                    api_key = st.secrets["GROQ_API_KEY"]
-            except Exception:
-                pass
+            api_key = os.environ.get("GROQ_API_KEY")
 
         if not api_key:
             raise ValueError(
