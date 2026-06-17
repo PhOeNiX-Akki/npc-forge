@@ -1345,6 +1345,9 @@ elif mode == "⚒️ Forge":
                 st.session_state.mode = "⚔️ Chat"
                 
                 # Reset forge inputs
+                for key in ["f_name", "f_avatar", "f_personality", "f_lore", "f_greeting"]:
+                    if key in st.session_state:
+                        del st.session_state[key]
                 st.session_state.f_name = ""
                 st.session_state.f_avatar = "🤖"
                 st.session_state.f_personality = ""
